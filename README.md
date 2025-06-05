@@ -186,3 +186,78 @@ You should see:
   hdfs dfs -rm -r /output/trending_days
   hdfs dfs -rm -r /scripts
 
+7.2 Upload Data & Scripts to HDFS
+
+```bash
+hdfs dfs -mkdir -p /input
+hdfs dfs -put C:\hadoop_data\YouTubeTrendingCloudProject\data\merged.csv /input/
+
+hdfs dfs -mkdir -p /scripts
+hdfs dfs -put C:\hadoop_data\YouTubeTrendingCloudProject\code\mapper.py /scripts/
+hdfs dfs -put C:\hadoop_data\YouTubeTrendingCloudProject\code\reducer.py /scripts/
+
+hdfs dfs -ls /input
+hdfs dfs -ls /scripts
+
+7.3 Execute Hadoop Streaming
+```bash
+hadoop jar %HADOOP_HOME%\share\hadoop\tools\lib\hadoop-streaming-3.3.1.jar ^
+  -files "hdfs:///scripts/mapper.py,hdfs:///scripts/reducer.py" ^
+  -input /input/merged.csv ^
+  -output /output/trending_days ^
+  -mapper "python mapper.py" ^
+  -reducer "python reducer.py"
+You should see:
+
+arduino
+
+map 100%   reduce 100%
+Job Finished successfully
+
+7.4 Retrieve Streaming Output Locally
+```bash
+hdfs dfs -get /output/trending_days/part-00000 C:\hadoop_data\YouTubeTrendingCloudProject\results\trending_days.txt
+type C:\hadoop_data\YouTubeTrendingCloudProject\results\trending_days.txt | more
+Example Output:
+
+nginx
+Copy
+Edit
+n1WpP7iowLc    7
+0dBIkQ4Mz1M    5
+5qpjK5DgCt4    6
+
+8. Running the Analysis Script
+Open a new Command Prompt, then run:
+
+```bash
+
+python C:\hadoop_data\YouTubeTrendingCloudProject\code\analyze.py
+This will generate output files in the results/ folder:
+
+CSV Files:
+merged_with_counts.csv
+
+top5_longest.csv
+
+avg_days_by_category.csv
+
+channels_long_trending.csv
+
+avg_views_by_bucket.csv
+
+avg_days_by_like_bucket.csv
+
+trending_duration_dist_head.csv
+
+trending_duration_dist_tail.csv
+
+top1percent_outliers.csv
+
+Chart:
+trending_duration_distribution.png
+
+Summary:
+analysis_summary.txt
+
+Open results/analysis_summary.txt to view key insights from the data analysis.
