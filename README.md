@@ -178,6 +178,8 @@ You should see:
    
         C:\hadoop_data\YouTubeTrendingCloudProject\
 
+---
+
 ## 7. Running the Hadoop Streaming Job
 
 7.1 Clean Old HDFS Data (Optional)
@@ -185,6 +187,7 @@ You should see:
   hdfs dfs -rm -r /input/merged.csv
   hdfs dfs -rm -r /output/trending_days
   hdfs dfs -rm -r /scripts
+
 
 7.2 Upload Data & Scripts to HDFS
 
@@ -198,6 +201,7 @@ hdfs dfs -put C:\hadoop_data\YouTubeTrendingCloudProject\code\reducer.py /script
 
 hdfs dfs -ls /input
 hdfs dfs -ls /scripts
+
 
 7.3 Execute Hadoop Streaming
 ```bash
