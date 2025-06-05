@@ -224,9 +224,8 @@ hdfs dfs -get /output/trending_days/part-00000 C:\hadoop_data\YouTubeTrendingClo
 type C:\hadoop_data\YouTubeTrendingCloudProject\results\trending_days.txt | more
 Example Output:
 
-nginx
-Copy
-Edit
+```nginx
+
 n1WpP7iowLc    7
 0dBIkQ4Mz1M    5
 5qpjK5DgCt4    6
