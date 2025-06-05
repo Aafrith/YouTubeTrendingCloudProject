@@ -65,53 +65,9 @@ This project implements a complete pipeline to analyze YouTube trending video da
 
 ---
 
-## 4. Project Structure
-
-  YouTubeTrendingCloudProject/
-├── code/
-│ ├── mapper.py # Hadoop Streaming Mapper
-│ ├── reducer.py # Hadoop Streaming Reducer
-│ ├── analyze.py # Python analysis script (Pandas + Matplotlib)
-│ └── merge_csvs.py* # (Optional) Merge CSVs into one
-├── data/
-│ ├── merged.csv # Final merged dataset (all countries)
-│ └── yt/
-│ ├── US_category_id.json
-│ ├── CA_category_id.json
-│ ├── ...
-│ └── RU_category_id.json
-├── results/
-│ ├── trending_days.txt
-│ ├── merged_with_counts.csv
-│ ├── top5_longest.csv
-│ ├── avg_days_by_category.csv
-│ ├── channels_long_trending.csv
-│ ├── avg_views_by_bucket.csv
-│ ├── avg_days_by_like_bucket.csv
-│ ├── trending_duration_dist_head.csv
-│ ├── trending_duration_dist_tail.csv
-│ ├── top1percent_outliers.csv
-│ ├── trending_duration_distribution.png
-│ └── analysis_summary.txt
-├── docs/
-│ └── README.md
-├── screenshots/
-│ ├── jps_output.png
-│ ├── hdfs_input_and_scripts.png
-│ ├── streaming_job_progress.png
-│ ├── hdfs_output_list.png
-│ ├── sample_part00000.png
-│ ├── analyze_script_output.png
-│ └── trending_duration_distribution_chart.png
-└── video/
-└── run_hadoop_and_analysis.mp4
-
-
-> Files marked with `*` are optional if used.
-
 ---
 
-## 5. Prerequisites
+## 4. Prerequisites
 
 1. **Java 8 (OpenJDK 1.8)**  
    - Verify:
@@ -148,7 +104,7 @@ This project implements a complete pipeline to analyze YouTube trending video da
 
 ---
 
-## 6. Setup and Installation
+## 5. Setup and Installation
 
 1. **Start Hadoop Daemons**  
    ```bat
@@ -180,16 +136,16 @@ You should see:
 
 ---
 
-## 7. Running the Hadoop Streaming Job
+## 6. Running the Hadoop Streaming Job
 
-7.1 Clean Old HDFS Data (Optional)
+6.1 Clean Old HDFS Data (Optional)
 ```bat
   hdfs dfs -rm -r /input/merged.csv
   hdfs dfs -rm -r /output/trending_days
   hdfs dfs -rm -r /scripts
 
 
-7.2 Upload Data & Scripts to HDFS
+6.2 Upload Data & Scripts to HDFS
 
 ```bash
 hdfs dfs -mkdir -p /input
@@ -203,7 +159,7 @@ hdfs dfs -ls /input
 hdfs dfs -ls /scripts
 
 
-7.3 Execute Hadoop Streaming
+6.3 Execute Hadoop Streaming
 ```bash
 hadoop jar %HADOOP_HOME%\share\hadoop\tools\lib\hadoop-streaming-3.3.1.jar ^
   -files "hdfs:///scripts/mapper.py,hdfs:///scripts/reducer.py" ^
@@ -218,7 +174,7 @@ arduino
 map 100%   reduce 100%
 Job Finished successfully
 
-7.4 Retrieve Streaming Output Locally
+6.4 Retrieve Streaming Output Locally
 ```bash
 hdfs dfs -get /output/trending_days/part-00000 C:\hadoop_data\YouTubeTrendingCloudProject\results\trending_days.txt
 type C:\hadoop_data\YouTubeTrendingCloudProject\results\trending_days.txt | more
@@ -230,7 +186,7 @@ n1WpP7iowLc    7
 0dBIkQ4Mz1M    5
 5qpjK5DgCt4    6
 
-8. Running the Analysis Script
+7. Running the Analysis Script
 Open a new Command Prompt, then run:
 
 ```bash
