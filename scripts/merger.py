@@ -8,7 +8,7 @@ EXTRACT_DIR = r"C:\Users\Lenovo\OneDrive\Desktop\yt"
 OUTPUT_CSV  = r"C:\Users\Lenovo\OneDrive\Desktop\merged.csv"
 # ----------------------------------------------
 
-# 1) Unzip into EXTRACT_DIR (if not already done)
+# 1) Unzip into EXTRACT_DIR
 if not os.path.isdir(EXTRACT_DIR):
     os.makedirs(EXTRACT_DIR, exist_ok=True)
     with zipfile.ZipFile(ZIP_PATH, "r") as z:
