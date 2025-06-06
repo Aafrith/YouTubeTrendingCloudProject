@@ -183,7 +183,10 @@ You should see:
    0dBIkQ4Mz1M    5
    5qpjK5DgCt4    6
 ```
-7. Running the Analysis Script
+
+---
+
+## 7. Running the Analysis Script
 ```
 Open a new Command Prompt, then run:
 
