@@ -54,7 +54,7 @@ This project implements a complete pipeline to analyze YouTube trending video da
 
 ## 3. Technologies & Environment
 
-- **Operating System:** Windows 10 (64-bit)  
+- **Operating System:** Windows 11 (64-bit)  
 - **Java:** OpenJDK 1.8 (e.g., Temurin 1.8.0_452)  
 - **Hadoop:** 3.3.1 standalone (pseudo-distributed)  
   - HDFS + YARN running locally  
@@ -69,15 +69,18 @@ This project implements a complete pipeline to analyze YouTube trending video da
 
 ## 4. Prerequisites
 
-1. **Java 8 (OpenJDK 1.8)**  
-   - Verify:
+1. **Java 8 (OpenJDK 1.8)**
+   - Download from: https://adoptium.net/temurin/releases/?version=8  
+   - Install and set environment variables:
+     ```
+     JAVA_HOME=C:\Program Files\Eclipse Adoptium\jdk-8.0.452-hotspot
+     PATH=%PATH%;%JAVA_HOME%\bin
+     ```
+   - Verify installation:
      ```bat
      java -version
      ```
-     You should see:
-     ```
-     openjdk version "1.8.0_452"
-     ```
+   - Output should show Java version 1.8.x.
 
 2. **Hadoop 3.3.1**  
    - Extract to `C:\hadoop\`  
@@ -89,7 +92,7 @@ This project implements a complete pipeline to analyze YouTube trending video da
      ```
    - Edit `hadoop-env.cmd`:
      ```bat
-     set JAVA_HOME=C:\Program Files\Eclipse Adoptium\jdk-8.0.452-hotspot
+     set JAVA_HOME="path_to_java1.8_jdk
      ```
 
 3. **Python 3.8+**  
