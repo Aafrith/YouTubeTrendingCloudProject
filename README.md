@@ -139,13 +139,13 @@ You should see:
 
 ## 6. Running the Hadoop Streaming Job
 
-###6.1 Clean Old HDFS Data (Optional)
+6.1 Clean Old HDFS Data (Optional)
 ```
   hdfs dfs -rm -r /input/merged.csv
   hdfs dfs -rm -r /output/trending_days
   hdfs dfs -rm -r /scripts
 ```
-###6.2 Upload Data & Scripts to HDFS
+6.2 Upload Data & Scripts to HDFS
 ```
    hdfs dfs -mkdir -p /input
    hdfs dfs -put C:\hadoop_data\YouTubeTrendingCloudProject\data\merged.csv /input/
@@ -158,7 +158,7 @@ You should see:
    hdfs dfs -ls /scripts
 ```
 
-###6.3 Execute Hadoop Streaming
+6.3 Execute Hadoop Streaming
 ```
    hadoop jar %HADOOP_HOME%\share\hadoop\tools\lib\hadoop-streaming-3.3.1.jar ^
      -files "hdfs:///scripts/mapper.py,hdfs:///scripts/reducer.py" ^
@@ -173,7 +173,7 @@ You should see:
    map 100%   reduce 100%
    Job Finished successfully
 ```
-###6.4 Retrieve Streaming Output Locally
+6.4 Retrieve Streaming Output Locally
 ```
    hdfs dfs -get /output/trending_days/part-00000 C:\hadoop_data\YouTubeTrendingCloudProject\results\trending_days.txt
    type C:\hadoop_data\YouTubeTrendingCloudProject\results\trending_days.txt | more
@@ -183,7 +183,7 @@ You should see:
    0dBIkQ4Mz1M    5
    5qpjK5DgCt4    6
 ```
-##7. Running the Analysis Script
+7. Running the Analysis Script
 ```
 Open a new Command Prompt, then run:
 
